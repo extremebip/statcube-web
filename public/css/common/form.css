@@ -1,0 +1,39 @@
+.accent-input {
+    height: 2.6em;
+    color: black;
+    font-size: 1.25em;
+    border-radius: 9999px;
+    background-color: #849FAD;
+    border-color: transparent;
+}
+
+::placeholder {
+    margin-left: 5rem;
+    color: black!important;
+    opacity: 1;
+}
+
+::-ms-input-placeholder {
+    color: black!important;
+}
+
+@media only screen and (min-width: 768px) {
+    form.medium-form {
+        margin-left: 8vw!important;
+        margin-right: 8vw!important;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    form.medium-form {
+        margin-left: 10vw!important;
+        margin-right: 10vw!important;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    form.medium-form {
+        margin-left: 12vw!important;
+        margin-right: 12vw!important;
+    }
+}

@@ -1,8 +1,22 @@
-.navbar-header{
-    font-size: 36px;
-    color: rgb(137,15,13);
-  }
-  .headerdiv{
-  
-    padding: 1vh;
-  }
+nav.navbar {
+    background-color: #E5E5E5;
+}
+
+a.nav-link {
+    color: black;
+    font-size: 1.15rem;
+    font-weight: 700;
+}
+
+.content {
+    min-height: calc(100vh - 50px);
+}
+
+.btn-danger {
+    background-color: #CA3542;
+    border: none;
+}
+
+.btn-pill {
+    border-radius: 9999px;
+}

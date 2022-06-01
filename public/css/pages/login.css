@@ -1,0 +1,9 @@
+.to-register {
+    font-size: 1.15rem;
+}
+
+button[type=submit] {
+    font-size: 1.25rem;
+    font-weight: 500;
+    width: 250px;
+}

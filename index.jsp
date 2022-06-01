@@ -1,3 +1,13 @@
+<% 
+    // Comment kode di bawah ini klo mau testing
+    response.sendRedirect("home.jsp");
+
+    // Test base URL
+    //String test = request.getContextPath();
+    //out.println(test);
+
+ %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

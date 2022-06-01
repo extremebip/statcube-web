@@ -1,0 +1,94 @@
+.to-login {
+    font-size: 1.15rem;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    height: calc(2.6em + 0.75rem);
+    margin-bottom: 0;
+    cursor: pointer;
+}
+
+.switch input {
+    display: none;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #849FAD;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 100%;
+    width: 50%;
+    background-color: #27647B;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.switch > input:checked + .slider:before {
+    -webkit-transform: translateX(100%);
+    -ms-transform: translateX(100%);
+    transform: translateX(100%);
+}
+
+.slider.round {
+    border-radius: 9999px;
+}
+
+.slider.round:before {
+    border-radius: 9999px;
+}
+
+.switch .labels {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    font-size: 1.25em;
+}
+
+.switch .labels::before {
+    content: attr(data-on);
+    position: absolute;
+    left: 21%;
+    top: 21%;
+    color: white;
+    -webkit-transition: color .4s;
+    transition: color .4s;
+}
+
+.switch .labels::after {
+    content: attr(data-off);
+    position: absolute;
+    top: 21%;
+    right: 21%;
+    color: black;
+    -webkit-transition: color .4s;
+    transition: color .4s;
+}
+
+.switch input:checked~.labels::before {
+    color: black;
+}
+
+.switch input:checked~.labels::after {
+    color: white;
+}
+
+button[type=submit] {
+    font-size: 1.25rem;
+    font-weight: 500;
+    width: 250px;
+}

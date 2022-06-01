@@ -1,41 +1,39 @@
-.section1{
+.section1 {
     background-color: #AEC0C9;
     display: flex;
     flex-direction: row;
     padding: 2vw 8vw;
 }
 
-.section1>img{
+.section1 > img {
     width: 32vw;
     margin: auto;
 }
 
-.section1>div{
+.section1 > div {
     margin: 8vw 7vw 4vw 0;
 }
 
-.slogan{
+.slogan {
     font-size: calc(32px + 2.5vw);
     font-weight: 700;
     line-height: 1.2;
     color: white;
 }
 
-.btn-subscribe{
-    padding:0 calc(16px + 1.2vw);
+.btn-subscribe {
+    /* Width minta tolong aturin lagi, biar responsive -> Buat Devita */
+    width: 350px;
     margin: 5px;
     font-size: calc(10px + 1.2vw);
-    border-radius: 40px;
-    color: white;
-    background-color: #CA3542;
-    border-color: transparent;
+    font-weight: 500;
 }
 
-.section2{
+.section2 {
     padding: 8vw;
 }
 
-.section2>p{
+.section2 > p {
     font-size: calc(28px + 1.5vw);
     font-weight: 600;
     line-height: 1.2;
@@ -43,36 +41,36 @@
     margin-bottom: 0;
 }
 
-.red{
+.red {
     color: #CA3542;
 }
 
-.card-slider{
+.card-slider {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     margin: calc(34px + 1.5vw) 0;
 }
 
-.card{
+.card {
     width: 30%;
     border-color: white;
 }
 
-.card>img{
+.card > img {
     width: 100%;
     height: 220px;
     margin-bottom: 20px;
 }
 
-.card>p{
+.card > p {
     margin: 0;
     font-size: calc(18px + 0.8vw);
     font-weight: 500;
     line-height: 1.2;
 }
 
-.card .author{
+.card .author {
     font-weight: 400;
     margin-top: 8px;
 }
