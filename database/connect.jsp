@@ -3,10 +3,10 @@
 <%!
 public static final class Connect {
     
-    private final String USERNAME = "root";
-    private final String PASSWORD = "";
-    private final String DATABASE = "test";
-    private final String HOST = "localhost:3306";
+    private final String USERNAME = "AH9w9W9dTm";
+    private final String PASSWORD = "Ebw0x1YTul";
+    private final String DATABASE = "AH9w9W9dTm";
+    private final String HOST = "remotemysql.com:3306";
     private final String CONNECTION = String.format("jdbc:mysql://%s/%s", HOST, DATABASE);
 
     private Connection con;

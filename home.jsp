@@ -1,7 +1,14 @@
 <%@include file="database/connect.jsp" %>
+<%@page import="java.sql.*" %>
 
 <%
     Connect connect = Connect.getConnection();
+
+    String query = "SELECT COUNT(*) FROM MsCourse";
+    ResultSet exampleRs = connect.executeQuery(query);
+    if (exampleRs.next()) {
+        out.println(exampleRs.getInt(1));
+    }
 
     int start = 1;
 %>
