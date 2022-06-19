@@ -15,7 +15,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Course</title>
+    <title>Course Detail</title>
 
     <!-- Stylesheets -->
     <link rel="stylesheet" href="./public/css/lib/bootstrap.min.css">
@@ -42,7 +42,7 @@
                 ResultSet topicRes = connect.executeQuery(selectQuery);
                 while(topicRes.next()){
             %>
-                    <a class="topic" href="">
+                    <a class="topic" href="topicDetail.jsp?id=<%= topicRes.getString("TopicID") %>">
                         <img class="topic-thumbnail" src="<%= topicRes.getString("TopicThumbnail") %>" alt="">
                         <div>
                             <p class="topic-title"><%= topicRes.getString("TopicTitle") %></p>
