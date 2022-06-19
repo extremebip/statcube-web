@@ -12,7 +12,7 @@
                 <a href="home.jsp" class="nav-link">Home</a>
             </li>
             <li class="nav-item">
-                <a href="about.jsp" class="nav-link">About Us</a>
+                <a href="about_us.jsp" class="nav-link">About Us</a>
             </li>
             <li class="nav-item">
                 <a href="course.jsp" class="nav-link">Courses</a>
