@@ -4,8 +4,8 @@
 <%
     Connect connect = Connect.getConnection();
 
-    String selectQuery = "SELECT DISTINCT MsCourse.CourseTitle, MsAdmin.AdminName, MsTopic.TopicThumbnail FROM MsCourse JOIN MsAdmin ON MsCourse.AdminID=MsAdmin.AdminID JOIN MsTopic ON MsTopic.CourseID=MsCourse.CourseID WHERE TopicID IN (SELECT MIN(TopicID) FROM MsTopic GROUP BY CourseID)";
-    ResultSet selectCourseRes = connect.executeQuery(selectQuery);
+    String selectQuery = "SELECT DISTINCT MsRecommended.CourseID, MsRecommended.CourseTitle, MsAdmin.AdminName, MsTopic.TopicThumbnail FROM MsRecommended JOIN MsAdmin ON MsRecommended.AdminID=MsAdmin.AdminID JOIN MsTopic ON MsTopic.CourseID=MsRecommended.CourseID WHERE TopicID IN (SELECT MIN(TopicID) FROM MsTopic GROUP BY CourseID)";
+    ResultSet selectRecommendedRes = connect.executeQuery(selectQuery);
 %>
 
 <!DOCTYPE html>
@@ -43,13 +43,13 @@
         <div class="swiper card-slider">
             <div class="swiper-wrapper">
                 <%
-                    while(selectCourseRes.next()){
+                    while(selectRecommendedRes.next()){
                 %>
-                        <div class="swiper-slide card">
-                            <img src="<%= selectCourseRes.getString("TopicThumbnail") %>" alt="">
-                            <p><%= selectCourseRes.getString("CourseTitle") %></p>
-                            <p class="author"><%= selectCourseRes.getString("AdminName") %></p>
-                        </div>
+                        <a class="swiper-slide card" href="courseDetail.jsp?id=<%= selectRecommendedRes.getString("CourseID") %>">
+                            <img src="<%= selectRecommendedRes.getString("TopicThumbnail") %>" alt="">
+                            <p><%= selectRecommendedRes.getString("CourseTitle") %></p>
+                            <p class="author"><%= selectRecommendedRes.getString("AdminName") %></p>
+                        </a>
                 <%
                     }
                 %>

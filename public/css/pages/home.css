@@ -53,9 +53,16 @@
 }
 
 .card {
+    text-decoration: none;
+    color: black;
     width: 30%;
     padding: 16px;
     border-color: white;
+}
+
+.card:hover{
+    text-decoration: none;
+    color: black;
 }
 
 .card > img {
@@ -64,7 +71,7 @@
     margin-bottom: 20px;
 }
 
-.card > p {
+.card>p {
     margin: 0;
     font-size: calc(8px + 1.8vw);
     font-weight: 500;
