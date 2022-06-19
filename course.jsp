@@ -5,7 +5,7 @@
     Connect connect = Connect.getConnection();
 
     String selectQuery = "SELECT * FROM MsCourse";
-    ResultSet result = connect.executeQuery(selectQuery);
+    ResultSet courseRes = connect.executeQuery(selectQuery);
 %>
 
 <!DOCTYPE html>
@@ -32,12 +32,12 @@
         <p class="title">Courses</p>
         <div class="wrapper">
             <%
-                while(result.next()){
+                while(courseRes.next()){
             %>
-                    <a class="box" href="courseDetail.jsp?id=<%= result.getString("CourseID") %>">
+                    <a class="box" href="courseDetail.jsp?id=<%= courseRes.getString("CourseID") %>">
                         <div>
-                            <p class="course-title"><%= result.getString("CourseTitle") %></p>
-                            <p class="course-description"><%= result.getString("CourseDescription") %></p>
+                            <p class="course-title"><%= courseRes.getString("CourseTitle") %></p>
+                            <p class="course-description"><%= courseRes.getString("CourseDescription") %></p>
                         </div>
                         <img class="img-next" src="./public/assets/Vector.png" alt="">
                     </a>

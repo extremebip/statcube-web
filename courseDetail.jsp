@@ -5,8 +5,8 @@
     Connect connect = Connect.getConnection();
 
     String query = String.format("SELECT * FROM MsCourse JOIN MsAdmin ON MsCourse.AdminID=MsAdmin.AdminID WHERE CourseID LIKE %s", request.getParameter("id"));
-    ResultSet result = connect.executeQuery(query);
-    result.next();
+    ResultSet courseResult = connect.executeQuery(query);
+    courseResult.next();
 %>
 
 <!DOCTYPE html>
@@ -31,9 +31,9 @@
     <%@ include file="navbar.jsp" %>
     <section>
         <div class="box">
-            <p class="course-title"><%= result.getString("CourseTitle") %></p>
-            <p class="course-author">by <%= result.getString("AdminName") %></p>
-            <p class="course-description"><%= result.getString("CourseDescription") %></p>
+            <p class="course-title"><%= courseResult.getString("CourseTitle") %></p>
+            <p class="course-author">by <%= courseResult.getString("AdminName") %></p>
+            <p class="course-description"><%= courseResult.getString("CourseDescription") %></p>
         </div>
         <div class="topic-wrapper">
             <p class="title2">Topics</p>

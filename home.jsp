@@ -5,7 +5,7 @@
     Connect connect = Connect.getConnection();
 
     String selectQuery = "SELECT DISTINCT MsCourse.CourseTitle, MsAdmin.AdminName, MsTopic.TopicThumbnail FROM MsCourse JOIN MsAdmin ON MsCourse.AdminID=MsAdmin.AdminID JOIN MsTopic ON MsTopic.CourseID=MsCourse.CourseID WHERE TopicID IN (SELECT MIN(TopicID) FROM MsTopic GROUP BY CourseID)";
-    ResultSet result = connect.executeQuery(selectQuery);
+    ResultSet selectCourseRes = connect.executeQuery(selectQuery);
 %>
 
 <!DOCTYPE html>
@@ -43,12 +43,12 @@
         <div class="swiper card-slider">
             <div class="swiper-wrapper">
                 <%
-                    while(result.next()){
+                    while(selectCourseRes.next()){
                 %>
                         <div class="swiper-slide card">
-                            <img src="<%= result.getString("TopicThumbnail") %>" alt="">
-                            <p><%= result.getString("CourseTitle") %></p>
-                            <p class="author"><%= result.getString("AdminName") %></p>
+                            <img src="<%= selectCourseRes.getString("TopicThumbnail") %>" alt="">
+                            <p><%= selectCourseRes.getString("CourseTitle") %></p>
+                            <p class="author"><%= selectCourseRes.getString("AdminName") %></p>
                         </div>
                 <%
                     }
