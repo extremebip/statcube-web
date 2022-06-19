@@ -54,8 +54,8 @@
                     }
                 %>
             </div>
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
+            <img src="./public/assets/right.png" class="swiper-button-next">
+            <img src="./public/assets/left.png" class="swiper-button-prev">
             <%-- <div class="swiper-pagination"></div> --%>
         </div> 
     </section>
