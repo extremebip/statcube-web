@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light">
     <a href="home.jsp" class="navbar-brand">
-        <img src="./public/assets/logo small.png" alt="" height="60">
+        <img src="./public/assets/logo small.png" alt="" height="55">
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-content">
         <span class="navbar-toggler-icon"></span>

@@ -1,4 +1,4 @@
-nav.navbar {
+nav.navbar, footer {
     background-color: #E5E5E5;
 }
 
@@ -6,6 +6,15 @@ a.nav-link {
     color: black;
     font-size: 1.15rem;
     font-weight: 700;
+}
+
+.nav-item{
+    margin-left: 20px;
+}
+
+.navbar-brand{
+    padding: 0;
+    margin: 0 12px;
 }
 
 .content {
@@ -19,4 +28,28 @@ a.nav-link {
 
 .btn-pill {
     border-radius: 9999px;
+}
+
+footer{
+    padding: 26px;
+}
+
+.footer-logo{
+    width: calc(4vw + 52px);
+}
+
+.contact-us{
+    font-weight: bolder;
+    font-size: calc(1vw + 12px);
+    margin: 16px 0 8px 0;
+}
+
+.sosmed{
+    width: 28px;
+    margin: 0 6px;
+}
+
+.copy-right{
+    margin-top: 16px;
+    font-size: calc(0.8vw + 10px);
 }

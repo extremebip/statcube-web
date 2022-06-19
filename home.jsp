@@ -4,13 +4,8 @@
 <%
     Connect connect = Connect.getConnection();
 
-    String query = "SELECT COUNT(*) FROM MsCourse";
-    ResultSet exampleRs = connect.executeQuery(query);
-    if (exampleRs.next()) {
-        out.println(exampleRs.getInt(1));
-    }
-
-    int start = 1;
+    String selectQuery = "SELECT DISTINCT MsCourse.CourseTitle, MsAdmin.AdminName, MsTopic.TopicThumbnail FROM MsCourse JOIN MsAdmin ON MsCourse.AdminID=MsAdmin.AdminID JOIN MsTopic ON MsTopic.CourseID=MsCourse.CourseID WHERE TopicID IN (SELECT MIN(TopicID) FROM MsTopic GROUP BY CourseID)";
+    ResultSet result = connect.executeQuery(selectQuery);
 %>
 
 <!DOCTYPE html>
@@ -25,6 +20,7 @@
     <link rel="stylesheet" href="./public/css/lib/bootstrap.min.css">
     <link rel="stylesheet" href="./public/css/style.css">
     <link rel="stylesheet" href="./public/css/navbar.css">
+    <link rel="stylesheet" href="./public/css/lib/swiper-bundle.min.css"/>
     <link rel="stylesheet" href="./public/css/pages/home.css">
 
     <!-- Scripts -->
@@ -44,20 +40,45 @@
         <p><span class="red">Thousands </span>of Courses.</p>
         <p><span class="red">One </span>memberships.</p>
 
-        <div class="card-slider">
-            <%
-                for(int i=start; i<start+3; i++){
-            %>
-                <div class="card">
-                    <img src="./public/assets/temp_image.jpg" alt="">
-                    <p>Course title - Lorem ipsum dolor sit amet consectetur adipisicing</p>
-                    <p class="author">Author</p>
-                </div>
-            <%
-                }
-            %>
+        <div class="swiper card-slider">
+            <div class="swiper-wrapper">
+                <%
+                    while(result.next()){
+                %>
+                        <div class="swiper-slide card">
+                            <img src="<%= result.getString("TopicThumbnail") %>" alt="">
+                            <p><%= result.getString("CourseTitle") %></p>
+                            <p class="author"><%= result.getString("AdminName") %></p>
+                        </div>
+                <%
+                    }
+                %>
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <%-- <div class="swiper-pagination"></div> --%>
         </div> 
     </section>
     <%@ include file="footer.jsp" %>
+
+    <script src="./public/js/lib/swiper-bundle.min.js"></script>
+    <!-- Initialize Swiper -->
+    <script>
+        var swiper = new Swiper(".card-slider", {
+          slidesPerView: 3,
+          spaceBetween: 30,
+          slidesPerGroup: 1,
+          loop: true,
+          loopFillGroupWithBlank: true,
+          pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+          },
+          navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+          },
+        });
+    </script>
 </body>
 </html>
