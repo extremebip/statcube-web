@@ -1,11 +1,7 @@
 <%@include file="database/connect.jsp" %>
-<%@page import="java.sql.*" %>
-
 <%
-    Connect connect = Connect.getConnection();
-
     String query = String.format("SELECT * FROM MsTopic WHERE TopicID LIKE %s", request.getParameter("id"));
-    ResultSet topicDetailResult = connect.executeQuery(query);
+    ResultSet topicDetailResult = st.executeQuery(query);
     topicDetailResult.next();
 %>
 
@@ -43,3 +39,6 @@
     <%@ include file="footer.jsp" %>
 </body>
 </html>
+<%
+    con.close();
+%>

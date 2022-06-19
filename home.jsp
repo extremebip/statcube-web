@@ -1,11 +1,8 @@
 <%@include file="database/connect.jsp" %>
-<%@page import="java.sql.*" %>
 
 <%
-    Connect connect = Connect.getConnection();
-
     String selectQuery = "SELECT DISTINCT MsRecommended.CourseID, MsRecommended.CourseTitle, MsAdmin.AdminName, MsTopic.TopicThumbnail FROM MsRecommended JOIN MsAdmin ON MsRecommended.AdminID=MsAdmin.AdminID JOIN MsTopic ON MsTopic.CourseID=MsRecommended.CourseID WHERE TopicID IN (SELECT MIN(TopicID) FROM MsTopic GROUP BY CourseID)";
-    ResultSet selectRecommendedRes = connect.executeQuery(selectQuery);
+    ResultSet selectRecommendedRes = st.executeQuery(selectQuery);
 %>
 
 <!DOCTYPE html>
@@ -82,3 +79,6 @@
     </script>
 </body>
 </html>
+<%
+    con.close();
+%>

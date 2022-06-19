@@ -1,11 +1,8 @@
 <%@include file="database/connect.jsp" %>
-<%@page import="java.sql.*" %>
 
 <%
-    Connect connect = Connect.getConnection();
-
     String selectQuery = "SELECT * FROM MsCourse";
-    ResultSet courseRes = connect.executeQuery(selectQuery);
+    ResultSet courseRes = st.executeQuery(selectQuery);
 %>
 
 <!DOCTYPE html>
@@ -49,3 +46,6 @@
     <%@ include file="footer.jsp" %>
 </body>
 </html>
+<%
+    con.close();
+%>

@@ -55,7 +55,7 @@ section{
 
 .topic-thumbnail{
     width: calc(64px + 12vw);
-    height: calc(28px + 8vw);
+    /* height: calc(28px + 8vw); */
     margin: auto;
     margin-right: 32px;
 }
@@ -75,4 +75,5 @@ section{
     text-align: justify;
     font-weight: 300;
     overflow: hidden;
+
 }

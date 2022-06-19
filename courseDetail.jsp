@@ -1,11 +1,8 @@
 <%@include file="database/connect.jsp" %>
-<%@page import="java.sql.*" %>
 
 <%
-    Connect connect = Connect.getConnection();
-
     String query = String.format("SELECT * FROM MsCourse JOIN MsAdmin ON MsCourse.AdminID=MsAdmin.AdminID WHERE CourseID LIKE %s", request.getParameter("id"));
-    ResultSet courseResult = connect.executeQuery(query);
+    ResultSet courseResult = st.executeQuery(query);
     courseResult.next();
 %>
 
@@ -39,7 +36,7 @@
             <p class="title2">Topics</p>
             <%
                 String selectQuery = String.format("SELECT * FROM MsTopic WHERE CourseID LIKE %s", request.getParameter("id"));
-                ResultSet topicRes = connect.executeQuery(selectQuery);
+                ResultSet topicRes = st.executeQuery(selectQuery);
                 while(topicRes.next()){
             %>
                     <a class="topic" href="topicDetail.jsp?id=<%= topicRes.getString("TopicID") %>">
@@ -57,3 +54,6 @@
     <%@ include file="footer.jsp" %>
 </body>
 </html>
+<%
+    con.close();
+%>
