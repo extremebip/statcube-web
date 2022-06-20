@@ -29,7 +29,7 @@
     <section class="section1">
         <div>
             <p class="slogan">Making Your Learning More Enjoyable</p>
-            <button class="btn btn-danger btn-pill btn-subscribe">Subscribe Now!</button>
+            <a href="subscribe.jsp"><button class="btn btn-danger btn-pill btn-subscribe">Subscribe Now!</button></a>
         </div>
         <img src="public/assets/cube.png" alt="">
     </section>
