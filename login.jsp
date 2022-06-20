@@ -1,3 +1,17 @@
+<%
+    String erremail= null;
+    if (session.getAttribute("txtEmailMessage") != null) {
+        erremail = session.getAttribute("txtEmailMessage").toString();
+        session.removeAttribute("txtEmailMessage");
+    }
+
+    String errpassword = null;
+    if (session.getAttribute("txtPasswordMessage") != null) {
+        errpassword = session.getAttribute("txtPasswordMessage").toString();
+        session.removeAttribute("txtPasswordMessage");
+    }
+%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,12 +41,18 @@
         </div>
         <div class="row">
             <div class="col-12">
-                <form action="#" class="mt-3 medium-form">
+                <form action="./controller/loginController.jsp" class="mt-3 medium-form">
                     <div class="form-group">
-                        <input type="text" class="form-control accent-input" placeholder="E-mail">
+                        <input type="text" class="form-control accent-input" placeholder="E-mail" name="txtEmail">
+                            <%-- <div class="invalid-feedback" id="txtEmailMessage"> --%>
+                             <a><%= (erremail != null) ? erremail : "" %></a>
+                            <%-- </div> --%>
                     </div>
                     <div class="form-group">
-                        <input type="password" class="form-control accent-input" placeholder="Password">
+                        <input type="password" class="form-control accent-input" placeholder="Password" name="txtPassword">
+                            <%-- <div class="invalid-feedback" id="txtPasswordMessage"> --%>
+                             <a><%= (errpassword != null) ? errpassword : "" %></a>
+                             <%-- </div> --%>
                     </div>
                     <div class="form-group text-center">
                         <p class="to-register">

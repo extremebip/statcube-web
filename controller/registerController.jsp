@@ -94,7 +94,19 @@
         String emaildb = rs.getString("UserEmail");
         if(email.equals(emaildb))
         {
-            out.println(email);
+            //out.println(email);
+            session.setAttribute("txtEmailMessage","Sorry, the email is taken already");
+            checkemail++;
+        }
+    }
+    String query2= String.format("Select * FROM MsAdmin");
+    ResultSet rs2 = st.executeQuery(query2);
+    while(rs2.next())
+    {
+        String emaildb = rs2.getString("AdminEmail");
+        if(email.equals(emaildb))
+        {
+            //out.println(email);
             session.setAttribute("txtEmailMessage","Sorry, the email is taken already");
             checkemail++;
         }
