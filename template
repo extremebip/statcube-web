@@ -1,3 +1,5 @@
+HAPUS KLO GA PKE DATABASE
+<%@include file="database/connect.jsp" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,3 +25,7 @@
     <%@ include file="footer.jsp" %>
 </body>
 </html>
+HAPUS KLO GA PKE DATABASE
+<%
+    con.close();
+%>

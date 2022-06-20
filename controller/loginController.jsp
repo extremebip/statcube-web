@@ -12,6 +12,7 @@
     ResultSet rs = st.executeQuery(query);
 
     String role="";
+    String namedb="";
 
     while(rs.next())
     {
@@ -24,6 +25,8 @@
             {
                 checkpassword=1;
                 role = "User";
+                namedb = rs.getString("UserName");
+
             }
         }
     }
@@ -41,6 +44,7 @@
             {
                 checkpassword=1;
                 role = "Admin";
+                namedb = rs.getString("AdminName");
             }
         }
     }
@@ -79,69 +83,64 @@
             }
     }
 
-    if(email.equals("")){
-        session.setAttribute("txtEmailMessage","Email cannot be empty");
-        //response.sendRedirect("./../login.jsp");
-    }
-    if(password.equals(""))
+    
+    if (password.equals(""))
     {
         session.setAttribute("txtPasswordMessage","Password cannot be empty");
         //response.sendRedirect("./../login.jsp");
     }
-    if(email.equals("")||password.equals(""))
+
+    if (email.equals("")){
+        session.setAttribute("txtEmailMessage","Email cannot be empty");
+        //response.sendRedirect("./../login.jsp");
+    }
+    else if(checkat!=1)
     {
+        session.setAttribute("txtEmailMessage","Email must contain 1'@' symbol");
+        emailvali++;
+    }
+    else if(checkdot==0)
+    {
+        session.setAttribute("txtEmailMessage","Email must contain at least 1 '.' symbol");
+        emailvali++;
+    }
+    else if(checkatdot>0)
+    {
+        session.setAttribute("txtEmailMessage","'@' and '.' must not be side by side");
+        emailvali++;
+    }
+    else if(checkatdot2>0)
+    {
+        session.setAttribute("txtEmailMessage","Invalid Email ('@' or '.' at the start/end of the email)");
+        emailvali++;
+    }
+
+    if(emailvali>0)
+    {
+        session.setAttribute("inputEmail", email);
+        response.sendRedirect("./../login.jsp");
+    }
+    else if(checkemail==0)
+    {
+        session.setAttribute("inputEmail", email);
+        session.setAttribute("txtEmailMessage","Email is not registered yet");
+        response.sendRedirect("./../login.jsp");
+    }
+    else if(checkemail==1 && checkpassword==0)
+    {
+        session.setAttribute("inputEmail", email);
+        session.setAttribute("txtPasswordMessage","Incorrect Password");
         response.sendRedirect("./../login.jsp");
     }
     else
     {
-        
-        if(checkat!=1)
-        {
-            session.setAttribute("txtEmailMessage","Email must contain 1'@' symbol");
-            emailvali++;
-        }
-        else if(checkdot==0)
-        {
-            session.setAttribute("txtEmailMessage","Email must contain at least 1 '.' symbol");
-            emailvali++;
-        }
-        else if(checkatdot>0)
-        {
-            session.setAttribute("txtEmailMessage","'@' and '.' must not be side by side");
-            emailvali++;
-        }
-        else if(checkatdot2>0)
-        {
-            session.setAttribute("txtEmailMessage","Invalid Email ('@' or '.' at the start/end of the email)");
-            emailvali++;
-        }
-        if(emailvali>0)
-        {
-            response.sendRedirect("./../login.jsp");
-        }
-        else if(checkemail==0)
-        {
-            session.setAttribute("txtEmailMessage","Email is not registered yet");
-            response.sendRedirect("./../login.jsp");
-        }
-        else if(checkemail==1 && checkpassword==0)
-        {
-            session.setAttribute("txtPasswordMessage","Incorrect Password");
-            response.sendRedirect("./../login.jsp");
-        }
-        else
-        {
-            //out.println(email);
-            //out.println(role);
-            //out.println(password);
-            //session.setAttribute("Username",namedb);
-            session.setAttribute("Role",role);
-            session.setAttribute("Email",email);
-            response.sendRedirect("./../home.jsp");
-        }
+        //out.println(email);
+        //out.println(role);
+        //out.println(password);
+        //session.setAttribute("Username",namedb);
+        session.setAttribute("Role",role);
+        session.setAttribute("Email",email);
+        session.setAttribute("Name",namedb);
+        response.sendRedirect("./../home.jsp");
     }
-  
-
-
-
 %>
