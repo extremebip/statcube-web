@@ -13,6 +13,8 @@
 
     String role="";
     String namedb="";
+    int UserID = -1;
+    int AdminID = -1;
 
     while(rs.next())
     {
@@ -26,7 +28,7 @@
                 checkpassword=1;
                 role = "User";
                 namedb = rs.getString("UserName");
-
+                UserID = rs.getInt("UserID");
             }
         }
     }
@@ -44,7 +46,8 @@
             {
                 checkpassword=1;
                 role = "Admin";
-                namedb = rs.getString("AdminName");
+                namedb = rs2.getString("AdminName");
+                AdminID = rs2.getInt("AdminID");
             }
         }
     }
@@ -138,6 +141,12 @@
         //out.println(role);
         //out.println(password);
         //session.setAttribute("Username",namedb);
+        if (UserID != -1 ){
+            session.setAttribute("UserID", UserID);
+        }
+        if (AdminID != -1 ){
+            session.setAttribute("AdminID", AdminID);
+        }
         session.setAttribute("Role",role);
         session.setAttribute("Email",email);
         session.setAttribute("Name",namedb);

@@ -1,3 +1,5 @@
+<%@include file="./helpers/guestGuard.jsp" %>
+
 <%
     String erremail= null;
     if (session.getAttribute("txtEmailMessage") != null) {
@@ -47,7 +49,7 @@
         </div>
         <div class="row">
             <div class="col-12">
-                <form action="./controller/loginController.jsp" class="mt-3 medium-form">
+                <form action="./controller/loginController.jsp" class="mt-3 medium-form" method="POST">
                     <div class="form-group">
                         <input type="text" class="form-control accent-input <%= (erremail != null) ? "is-invalid" : "" %>" placeholder="E-mail" name="txtEmail" value="<%= prevInputEmail %>">
                         <div class="invalid-feedback" id="txtEmailMessage">

@@ -1,3 +1,5 @@
+<%@include file="./helpers/guestGuard.jsp" %>
+
 <%
     String errname= null;
     if (session.getAttribute("txtNameMessage") != null) {
@@ -65,7 +67,7 @@
         </div>
         <div class="row">
             <div class="col-12">
-                <form action="./controller/registerController.jsp" id="frmRegis" class="mt-3 medium-form">
+                <form action="./controller/registerController.jsp" id="frmRegis" class="mt-3 medium-form" method="POST">
                     <div class="form-group">
                         <input type="text" class="form-control accent-input <%= (errname != null) ? "is-invalid" : "" %>" placeholder="Username" id="txtName" name="txtName" value="<%= prevInputName%>">
                         <div class="invalid-feedback">

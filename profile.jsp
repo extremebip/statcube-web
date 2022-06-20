@@ -1,3 +1,5 @@
+<%@include file="./helpers/userGuard.jsp" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
