@@ -1,3 +1,10 @@
+<%
+    String role = ""; 
+    role = (String)session.getAttribute("Role");
+    String name = "" ;
+    name = (String)session.getAttribute("Name");
+%>
+
 <nav class="navbar navbar-expand-lg navbar-light">
     <a href="home.jsp" class="navbar-brand">
         <img src="./public/assets/logo small.png" alt="" height="55">
@@ -18,6 +25,14 @@
                 <a href="course.jsp" class="nav-link">Courses</a>
             </li>
         </ul>
+        <%
+            if(role=="User" || role==("Admin"))
+            {
+        %>
+            <a class="nav-link">Welcome, <%= name %></a>
+        <%         
+            } else {
+        %>
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
                 <a href="login.jsp" class="nav-link">Login</a>
@@ -26,6 +41,7 @@
                 <a href="register.jsp" class="nav-link">Register</a>
             </li>
         </ul>
+        <%}%>
     </div>
 </nav>
 

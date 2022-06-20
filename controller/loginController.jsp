@@ -12,6 +12,7 @@
     ResultSet rs = st.executeQuery(query);
 
     String role="";
+    String namedb="";
 
     while(rs.next())
     {
@@ -24,6 +25,8 @@
             {
                 checkpassword=1;
                 role = "User";
+                namedb = rs.getString("UserName");
+
             }
         }
     }
@@ -41,6 +44,7 @@
             {
                 checkpassword=1;
                 role = "Admin";
+                namedb = rs.getString("AdminName");
             }
         }
     }
@@ -137,6 +141,7 @@
             //session.setAttribute("Username",namedb);
             session.setAttribute("Role",role);
             session.setAttribute("Email",email);
+            session.setAttribute("Name",namedb);
             response.sendRedirect("./../home.jsp");
         }
     }
