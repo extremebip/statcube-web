@@ -95,7 +95,7 @@
         if(email.equals(emaildb))
         {
             //out.println(email);
-            session.setAttribute("txtEmailMessage","Sorry, the email is taken already");
+            session.setAttribute("txtEmailMessage","Sorry, the email is already taken");
             checkemail++;
         }
     }
@@ -176,6 +176,8 @@
     }
     else
     {
+        session.setAttribute("inputUsername", name);
+        session.setAttribute("inputEmail", email);
         response.sendRedirect("./../register.jsp");
     }
 
