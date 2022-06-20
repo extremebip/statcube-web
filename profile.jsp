@@ -44,10 +44,3 @@
     <%@ include file="footer.jsp" %>
 </body>
 </html>
-
-<style>
-    .btn-danger-2 {
-        background-color: #27647B;
-        border: none;
-    }
-</style>
