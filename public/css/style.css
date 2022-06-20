@@ -25,6 +25,10 @@ a.nav-link {
     background-color: #CA3542;
     border: none;
 }
+.btn-danger-2 {
+    background-color: #27647B;
+    border: none;
+}
 
 .btn-pill {
     border-radius: 9999px;

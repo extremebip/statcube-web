@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{Page Title}</title>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="./public/css/lib/bootstrap.min.css">
+    <link rel="stylesheet" href="./public/css/style.css">
+    <link rel="stylesheet" href="./public/css/navbar.css">
+
+    <!-- Scripts -->
+    <script src="./public/js/lib/jquery-3.6.0.min.js"></script>
+    <script src="./public/js/lib/bootstrap.bundle.min.js"></script>
+
+</head>
+<body>
+    <%@ include file="navbar.jsp" %>
+    <div class="content container-md p-5">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h1>Profile</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                    <div class="form-group text-center">
+                        <button type="submit" class="btn btn-danger-2 btn-pill">Change Password</button>
+                    </div>
+                    <div class="form-group text-center">
+                        <button type="submit" class="btn btn-danger btn-pill">Log Out</button>
+                    </div>
+            </div>
+        </div>
+    </div>
+    <%@ include file="footer.jsp" %>
+</body>
+</html>
+
+<style>
+    .btn-danger-2 {
+        background-color: #27647B;
+        border: none;
+    }
+</style>
