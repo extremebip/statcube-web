@@ -5,5 +5,6 @@
         LoggedAdminID = Integer.parseInt(tempAdminID);
     } else {
         response.sendRedirect("./home.jsp");
+        return;
     }
 %>

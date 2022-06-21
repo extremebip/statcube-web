@@ -5,5 +5,6 @@
         LoggedUserID = Integer.parseInt(tempUserID);
     } else {
         response.sendRedirect("./home.jsp");
+        return;
     }
 %>
