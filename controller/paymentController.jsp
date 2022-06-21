@@ -1,4 +1,6 @@
 <%@ include file="./../database/connect.jsp" %>
+<%@ include file="./../helpers/userGuard.jsp" %>
+
 
 <%
     String payment = request.getParameter("payment");
@@ -11,10 +13,10 @@
         response.sendRedirect("../payment.jsp");
     }
     else{
-        String insert = String.format("INSERT INTO TrPayment (UserID,PaymentMethod, PaymentDate) VALUES ('%s','%s',CURRENT_TIMESTAMP)",id,payment);
+        String insert = String.format("INSERT INTO TrPayment (UserID,PaymentMethod, PaymentDate) VALUES (%d,'%s',CURRENT_TIMESTAMP)",LoggedUserID,payment);
         st.executeUpdate(insert);
 
-        insert = String.format("UPDATE MsUser SET UserSUbscriptionEndDate = (DATE_ADD(CURRENT_TIMESTAMP, INTERVAL 1 MONTH)) WHERE UserID = '%s'",id);
+        insert = String.format("UPDATE MsUser SET UserSUbscriptionEndDate = (DATE_ADD(CURRENT_TIMESTAMP, INTERVAL 1 MONTH)) WHERE UserID = %d",LoggedUserID);
         st.executeUpdate(insert);
 
         response.sendRedirect("../profile.jsp");
