@@ -1,5 +1,19 @@
 <%@include file="database/connect.jsp" %>
 <%
+    if(session.getAttribute("UserID") == null && session.getAttribute("AdminID") == null){
+        response.sendRedirect("./login.jsp"); 
+    }
+
+    if(session.getAttribute("UserID") != null) {
+        boolean subscribe = false;
+        String cekSubscribe = String.format("SELECT * FROM MsUser WHERE UserID LIKE %s AND UserSubscriptionEndDate > CURRENT_TIMESTAMP", session.getAttribute("UserID").toString());
+        ResultSet res = st.executeQuery(cekSubscribe);
+        
+        if(!res.next()){
+            response.sendRedirect("./profile.jsp"); 
+        }
+    }
+
     String query = String.format("SELECT * FROM MsTopic WHERE TopicID LIKE %s", request.getParameter("id"));
     ResultSet topicDetailResult = st.executeQuery(query);
     topicDetailResult.next();
