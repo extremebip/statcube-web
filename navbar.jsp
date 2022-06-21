@@ -1,6 +1,6 @@
 <%
-    String role = ""; 
-    role = (String)session.getAttribute("Role");
+    String role2 = ""; 
+    role2 = (String)session.getAttribute("Role");
     String name = "" ;
     name = (String)session.getAttribute("Name");
 %>
@@ -26,10 +26,10 @@
             </li>
         </ul>
         <%
-            if(role=="User" || role==("Admin"))
+            if(role2=="User" || role2==("Admin"))
             {
         %>
-            <a class="nav-link">Welcome, <%= name %></a>
+            <a class="nav-link " href="profile.jsp">Welcome, <%= name %></a>
         <%         
             } else {
         %>
