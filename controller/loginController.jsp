@@ -1,4 +1,6 @@
+<%@page import="java.text.SimpleDateFormat" %> 
 <%@ include file="./../database/connect.jsp" %>
+
 
 <%
     String email = request.getParameter("txtEmail");
@@ -15,6 +17,7 @@
     String namedb="";
     int UserID = -1;
     int AdminID = -1;
+    String subsenddate="";
 
     while(rs.next())
     {
@@ -29,6 +32,7 @@
                 role = "User";
                 namedb = rs.getString("UserName");
                 UserID = rs.getInt("UserID");
+                subsenddate = rs.getString("UserSubscriptionEndDate");
             }
         }
     }
@@ -137,10 +141,6 @@
     }
     else
     {
-        //out.println(email);
-        //out.println(role);
-        //out.println(password);
-        //session.setAttribute("Username",namedb);
         if (UserID != -1 ){
             session.setAttribute("UserID", UserID);
         }
@@ -150,6 +150,68 @@
         session.setAttribute("Role",role);
         session.setAttribute("Email",email);
         session.setAttribute("Name",namedb);
-        response.sendRedirect("./../home.jsp");
+        //check subsenddate 
+        if(UserID != -1 && subsenddate!=null)
+        {
+            //out.println(subsenddate);
+            java.util.Date dNow = new java.util.Date(); 
+            SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+            String currentdate =df.format(dNow);
+            //out.println(currentdate);
+            String year1="";String year2="";String month1="";String month2="";String day1="";String day2="";
+            for(int i=0;i<10;i++)
+            {
+                if(i==0)
+                {
+                    String a = Character.toString(subsenddate.charAt(i));
+                    String a2 = Character.toString(subsenddate.charAt(i+1));
+                    String a3 = Character.toString(subsenddate.charAt(i+2));
+                    String a4 = Character.toString(subsenddate.charAt(i+3));
+                    String b = Character.toString(currentdate.charAt(i));
+                    String b2 = Character.toString(currentdate.charAt(i+1));
+                    String b3 = Character.toString(currentdate.charAt(i+2));
+                    String b4 = Character.toString(currentdate.charAt(i+3));
+                    year1 = a+a2+a3+a4;
+                    year2 = b+b2+b3+b4;
+                }
+                if(i==5)
+                {
+                    String a = Character.toString(subsenddate.charAt(i));
+                    String a2 = Character.toString(subsenddate.charAt(i+1));
+                    String b = Character.toString(currentdate.charAt(i));
+                    String b2 = Character.toString(currentdate.charAt(i+1));
+                    month1=a+a2;
+                    month2=b+b2;
+                }
+                if(i==8)
+                {
+                    String a = Character.toString(subsenddate.charAt(i));
+                    String a2 = Character.toString(subsenddate.charAt(i+1));
+                    String b = Character.toString(currentdate.charAt(i));
+                    String b2 = Character.toString(currentdate.charAt(i+1));
+                    day1=a+a2;
+                    day2=b+b2;
+                }
+            }
+            if(Integer.parseInt(year1)<Integer.parseInt(year2))
+            {
+                String update  = String.format("UPDATE MsUser SET UserSubscriptionEndDate=null WHERE userid = ('%d')",UserID);
+                st.executeUpdate(update);
+            }
+            else if(Integer.parseInt(month1)<Integer.parseInt(month2) && Integer.parseInt(year1)>=Integer.parseInt(year2))
+            {
+                String update  = String.format("UPDATE MsUser SET UserSubscriptionEndDate=null WHERE userid = ('%d')",UserID);
+                st.executeUpdate(update);
+            }
+            else if(Integer.parseInt(day1)<Integer.parseInt(day2) && Integer.parseInt(month1)>=Integer.parseInt(month2) && Integer.parseInt(year1)>=Integer.parseInt(year2))
+            {
+                String update  = String.format("UPDATE MsUser SET UserSubscriptionEndDate=null WHERE userid = ('%d')",UserID);
+                st.executeUpdate(update);
+            }
+        }
+        else{
+            session.setAttribute("Status","false");
+        }
+        //response.sendRedirect("./../home.jsp");
     }
 %>
