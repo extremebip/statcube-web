@@ -1,0 +1,102 @@
+section{
+    padding: calc(12px + 2.5vw) 8vw;
+}
+
+.title{
+    font-weight: bolder;
+    font-size: calc(24px + 1.5vw);
+    text-align: center;
+}
+
+.box{
+    background-color: #AEC0C9;
+    padding: 24px calc(1vw + 20px);
+}
+
+table{
+    margin-bottom: 16px;
+}
+
+.label{
+    width: calc(32px + 6vw);
+    margin: 0;
+}
+
+.bolder{
+    font-weight: bolder;
+    vertical-align: text-top;
+}
+
+.box{
+    font-size: calc(12px + 0.65vw);
+}
+
+td{
+    padding-right: 10px;
+    padding-bottom: 8px;
+}
+
+.title2{
+    font-weight: bolder;
+    font-size: calc(18px + 1vw);
+    margin-top:calc(18px + 1.5vw);
+}
+
+.inline{
+    display: flex;
+    flex-direction: row;
+}
+
+textarea{
+    background-color: #AEC0C9;
+    width: calc(100% - 20px - 1vw);
+    height: 48px;
+    padding: 12px;
+    border: 0;
+}
+
+button{
+    border: 0;
+    background-color: white;
+    margin: auto 10px;
+}
+
+button>img{
+    width: calc(20px + 1vw);
+}
+
+.posts{
+    margin: calc(18px + 2vw) 0;
+}
+
+.post{
+    border: #27647B;
+    border-style: solid;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    padding: 15px 20px;
+}
+
+.post-name{
+    margin: 0;
+    font-weight: bolder;
+    font-size: calc(16px + 0.4vw);
+}
+
+.post-date{
+    margin: 0;
+    margin-bottom: 10px;
+    font-weight: 300;
+    font-size: calc(12px + 0.4vw);
+}
+
+.post-content{
+    margin: 0;
+    font-size: calc(12px + 0.4vw);
+}
+
+#errMsg{
+    color: red;
+    display: none;
+}
