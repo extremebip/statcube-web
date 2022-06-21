@@ -74,4 +74,16 @@
     background-color: #CA3542;
 }
 
+.btn-subscribe-now, .btn-subscribe-now:hover{
+    background-color: #CA3542;
+    text-decoration: none;
+    color: white;
+    font-weight: bolder;
+    font-size: calc(16px + 0.4vw);
+    width: 100%;
+    text-align: center;
+    padding: 5px;
+    border-radius: 28px;
+}
+
 

@@ -82,7 +82,6 @@
                         <%
                         if(subsdatedb==null){
                         %>
-                        
                         <p>-</p> 
                         <%}%>
                         <% 
@@ -94,7 +93,7 @@
                 </div>
                 <% if(subsdatedb==null){ %>
                     <div class="button">
-                    <center><a class="btn-logout" href="">Subscribe Now</a></center>
+                        <a class="btn-subscribe-now" href="">Subscribe Now</a>
                     </div>
                 <% } %>
          <% } %>
