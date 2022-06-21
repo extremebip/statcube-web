@@ -58,7 +58,7 @@
         </div>
         <div class="row mt-2">
             <div class="col-12">
-                <a href="adddiscussion.jsp" class="btn btn-add-discussion btn-danger btn-pill">Add Discussion</a>
+                <a href="addDiscussion.jsp?id=<%= request.getParameter("topic") %>" class="btn btn-add-discussion btn-danger btn-pill">Add Discussion</a>
             </div>
         </div>
         <div class="row mt-3">
