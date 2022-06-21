@@ -8,24 +8,40 @@
     String namedb="";
     String emaildb="";
     String subsdatedb = "";
-    int UserID = -1;
-    int AdminID = -1;
 
-    
-    String query = String.format("Select * FROM MsUser where UserEmail like '%%%s%%'",email);
-    ResultSet rs = st.executeQuery(query);
-    
-    while(rs.next())
-    {
-        emaildb = rs.getString("UserEmail");
-        namedb = rs.getString("UserName");
-        UserID = rs.getInt("UserID");
-        subsdatedb = rs.getString("UserSubscriptionEndDate");
+    int UserID=-1;
+    int AdminID=-1;
+
+    if(role=="User"){
+        String query = String.format("Select * FROM MsUser where UserEmail like '%%%s%%'",email);
+        ResultSet rs = st.executeQuery(query);
         
+        while(rs.next())
+        {
+            emaildb = rs.getString("UserEmail");
+            namedb = rs.getString("UserName");
+            UserID = rs.getInt("UserID");
+            subsdatedb = rs.getString("UserSubscriptionEndDate");
+            
+        }
     }
+    else if(role=="Admin")
+    {
+        String query = String.format("Select * FROM MsAdmin where AdminEmail like '%%%s%%'",email);
+        ResultSet rs = st.executeQuery(query);
+        
+        while(rs.next())
+        {
+            emaildb = rs.getString("AdminEmail");
+            namedb = rs.getString("AdminName");
+            AdminID = rs.getInt("AdminID");
+            subsdatedb =null;            
+        }
+    }
+
 %>
 
-<%@include file="./helpers/userGuard.jsp" %>
+<%@include file="./helpers/loginGuard.jsp" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -51,35 +67,37 @@
     <%@ include file="navbar.jsp" %>
     <div class="content container-md p-5">
         <h1 class="title">Profile</h1>
-        <div class="box">
-            <% if(subsdatedb==null){ %>
-                <center><img src="./public/assets/unsubscribe.png" alt=""></center>
-                 <p>Haven't subscribed</p>
-            <% }else{ %>
-                <center><img src="./public/assets/subscribe.png" alt=""></center>
-                 <p>Subscribed</p>
-                <%}%>
-            <div class="inline">
-                <p class="bolder">Subscription End Date</p>
-                <%
-                if(subsdatedb==null){
-                %>
-                
-                <p>-</p> 
-                <%}%>
-                <% 
-                if(subsdatedb!=null){
-                %>
-                    <p><%= subsdatedb %></p>
-                <%}%>
-            </div>
-        </div>
-        <% if(subsdatedb==null){ %>
-            <div class="button">
-            <center><a class="btn-logout" href="">Subscribe Now</a></center>
-            </div>
-        <% } %>
-
+        <%if(role=="User")
+        {%>
+            <div class="box">
+                    <% if(subsdatedb==null){ %>
+                        <center><img src="./public/assets/unsubscribe.png" alt=""></center>
+                        <p>Haven't subscribed</p>
+                    <% }else{ %>
+                        <center><img src="./public/assets/subscribe.png" alt=""></center>
+                        <p>Subscribed</p>
+                        <%}%>
+                    <div class="inline">
+                        <p class="bolder">Subscription End Date</p>
+                        <%
+                        if(subsdatedb==null){
+                        %>
+                        
+                        <p>-</p> 
+                        <%}%>
+                        <% 
+                        if(subsdatedb!=null){
+                        %>
+                            <p><%= subsdatedb %></p>
+                        <%}%>
+                    </div>
+                </div>
+                <% if(subsdatedb==null){ %>
+                    <div class="button">
+                    <center><a class="btn-logout" href="">Subscribe Now</a></center>
+                    </div>
+                <% } %>
+         <% } %>
 
         <div class="profile">
             <p class="bolder">Name</p>
