@@ -151,67 +151,26 @@
         session.setAttribute("Email",email);
         session.setAttribute("Name",namedb);
         //check subsenddate 
-        if(UserID != -1 && subsenddate!=null)
+        boolean isSubscribe = false;
+        if(UserID != -1)
         {
-            //out.println(subsenddate);
-            java.util.Date dNow = new java.util.Date(); 
-            SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-            String currentdate =df.format(dNow);
-            //out.println(currentdate);
-            String year1="";String year2="";String month1="";String month2="";String day1="";String day2="";
-            for(int i=0;i<10;i++)
-            {
-                if(i==0)
-                {
-                    String a = Character.toString(subsenddate.charAt(i));
-                    String a2 = Character.toString(subsenddate.charAt(i+1));
-                    String a3 = Character.toString(subsenddate.charAt(i+2));
-                    String a4 = Character.toString(subsenddate.charAt(i+3));
-                    String b = Character.toString(currentdate.charAt(i));
-                    String b2 = Character.toString(currentdate.charAt(i+1));
-                    String b3 = Character.toString(currentdate.charAt(i+2));
-                    String b4 = Character.toString(currentdate.charAt(i+3));
-                    year1 = a+a2+a3+a4;
-                    year2 = b+b2+b3+b4;
-                }
-                if(i==5)
-                {
-                    String a = Character.toString(subsenddate.charAt(i));
-                    String a2 = Character.toString(subsenddate.charAt(i+1));
-                    String b = Character.toString(currentdate.charAt(i));
-                    String b2 = Character.toString(currentdate.charAt(i+1));
-                    month1=a+a2;
-                    month2=b+b2;
-                }
-                if(i==8)
-                {
-                    String a = Character.toString(subsenddate.charAt(i));
-                    String a2 = Character.toString(subsenddate.charAt(i+1));
-                    String b = Character.toString(currentdate.charAt(i));
-                    String b2 = Character.toString(currentdate.charAt(i+1));
-                    day1=a+a2;
-                    day2=b+b2;
-                }
+            String checkSubsQuery = String.format(
+                "SELECT * FROM MsUser " + 
+                "WHERE UserID = %d AND DATE(UserSubscriptionEndDate) >= CURDATE()", UserID);
+            ResultSet checkSubsRs = st.executeQuery(checkSubsQuery);
+            if (checkSubsRs.next()) {
+                isSubscribe = true;
             }
-            if(Integer.parseInt(year1)<Integer.parseInt(year2))
+            if(isSubscribe==false)
             {
                 String update  = String.format("UPDATE MsUser SET UserSubscriptionEndDate=null WHERE userid = ('%d')",UserID);
                 st.executeUpdate(update);
+                session.setAttribute("Status","false");
             }
-            else if(Integer.parseInt(month1)<Integer.parseInt(month2) && Integer.parseInt(year1)>=Integer.parseInt(year2))
-            {
-                String update  = String.format("UPDATE MsUser SET UserSubscriptionEndDate=null WHERE userid = ('%d')",UserID);
-                st.executeUpdate(update);
-            }
-            else if(Integer.parseInt(day1)<Integer.parseInt(day2) && Integer.parseInt(month1)>=Integer.parseInt(month2) && Integer.parseInt(year1)>=Integer.parseInt(year2))
-            {
-                String update  = String.format("UPDATE MsUser SET UserSubscriptionEndDate=null WHERE userid = ('%d')",UserID);
-                st.executeUpdate(update);
+            else{
+                session.setAttribute("Status","true");
             }
         }
-        else{
-            session.setAttribute("Status","false");
-        }
-        //response.sendRedirect("./../home.jsp");
+        response.sendRedirect("./../home.jsp");
     }
 %>
