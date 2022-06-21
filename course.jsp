@@ -27,6 +27,7 @@
     <%@ include file="navbar.jsp" %>
     <section>
         <p class="title">Courses</p>
+        <%-- <p href="#">Add Courses</p> --%>
         <div class="wrapper">
             <%
                 while(courseRes.next()){

@@ -93,7 +93,7 @@
                 </div>
                 <% if(subsdatedb==null){ %>
                     <div class="button">
-                        <a class="btn-subscribe-now" href="">Subscribe Now</a>
+                        <a class="btn-subscribe-now" href="subscripe.jsp">Subscribe Now</a>
                     </div>
                 <% } %>
          <% } %>
