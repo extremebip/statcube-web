@@ -3,6 +3,8 @@
 <%
     String selectQuery = "SELECT * FROM MsCourse";
     ResultSet courseRes = st.executeQuery(selectQuery);
+    String role = ""; 
+    role = (String)session.getAttribute("Role");
 %>
 
 <!DOCTYPE html>
@@ -27,7 +29,9 @@
     <%@ include file="navbar.jsp" %>
     <section>
         <p class="title">Courses</p>
-        <%-- <p href="#">Add Courses</p> --%>
+        <% if(role=="Admin"){%>
+            <a href="addCourse.jsp" class="btn btn-danger btn-pill">Add Course</a>
+        <%}%>
         <div class="wrapper">
             <%
                 while(courseRes.next()){
