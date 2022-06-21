@@ -1,14 +1,30 @@
+<%@include file="./helpers/guestGuard.jsp" %>
+
 <%
     String errname= null;
     if (session.getAttribute("txtNameMessage") != null) {
         errname = session.getAttribute("txtNameMessage").toString();
         session.removeAttribute("txtNameMessage");
     }
+
+    String prevInputName = "";
+    if (session.getAttribute("inputUsername") != null) {
+        prevInputName = session.getAttribute("inputUsername").toString();
+        session.removeAttribute("inputUsername");
+    }
+
     String erremail= null;
     if (session.getAttribute("txtEmailMessage") != null) {
         erremail = session.getAttribute("txtEmailMessage").toString();
         session.removeAttribute("txtEmailMessage");
     }
+
+    String prevInputEmail = "";
+    if (session.getAttribute("inputEmail") != null) {
+        prevInputEmail = session.getAttribute("inputEmail").toString();
+        session.removeAttribute("inputEmail");
+    }
+
     String errpassword = null;
     if (session.getAttribute("txtPasswordMessage") != null) {
         errpassword = session.getAttribute("txtPasswordMessage").toString();
@@ -51,31 +67,31 @@
         </div>
         <div class="row">
             <div class="col-12">
-                <form action="./controller/registerController.jsp" id="frmRegis" class="mt-3 medium-form">
+                <form action="./controller/registerController.jsp" id="frmRegis" class="mt-3 medium-form" method="POST">
                     <div class="form-group">
-                        <input type="text" class="form-control accent-input" placeholder="Username" id="txtName" name="txtName" >
-                            <%-- <a> --%>
+                        <input type="text" class="form-control accent-input <%= (errname != null) ? "is-invalid" : "" %>" placeholder="Username" id="txtName" name="txtName" value="<%= prevInputName%>">
+                        <div class="invalid-feedback">
                             <%= (errname != null) ? errname : "" %>
-                            <%-- </a> --%>
+                        </div>
                     </div>
                     <div class="form-group">
-                        <input type="email" class="form-control accent-input" placeholder="E-mail" id="txtEmail" name="txtEmail">
-                            <%-- <div class="invalid-feedback" id="txtEmailMessage"> --%>
-                             <a><%= (erremail != null) ? erremail : "" %></a>
-                            <%-- </div> --%>
+                        <input type="email" class="form-control accent-input <%= (erremail != null) ? "is-invalid" : "" %>" placeholder="E-mail" id="txtEmail" name="txtEmail" value="<%= prevInputEmail%>">
+                        <div class="invalid-feedback">
+                            <%= (erremail != null) ? erremail : "" %>
+                        </div>
                     </div>
                     <div class="form-group">
-                        <input type="password" class="form-control accent-input" placeholder="Password" id="txtPassword" name="txtPassword">
-                         <%-- <div class="invalid-feedback" id="txtPasswordMessage"> --%>
-                             <a><%= (errpassword != null) ? errpassword : "" %></a>
-                             <%-- </div> --%>
+                        <input type="password" class="form-control accent-input <%= (errpassword != null) ? "is-invalid" : "" %>" placeholder="Password" id="txtPassword" name="txtPassword">
+                        <div class="invalid-feedback">
+                            <%= (errpassword != null) ? errpassword : "" %>
+                        </div>
                     </div>
                     <div class="form-group">
-                        <input type="password" class="form-control accent-input" placeholder="Confirm Password" 
+                        <input type="password" class="form-control accent-input <%= (errpassword2 != null) ? "is-invalid" : "" %>" placeholder="Confirm Password" 
                         id="txtConfirmPassword" name="txtConfirmPassword">
-                            <%-- <div class="invalid-feedback" id="txtConfirmPasswordMessage"> --%>
-                            <a><%= (errpassword2 != null) ? errpassword2 : "" %></a>
-                            <%-- </div> --%>
+                        <div class="invalid-feedback">
+                            <%= (errpassword2 != null) ? errpassword2 : "" %>
+                        </div>
                     </div>
                     <div class="form-group text-center">
                         <p class="to-login">

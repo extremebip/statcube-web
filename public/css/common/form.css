@@ -7,8 +7,15 @@
     border-color: transparent;
 }
 
+.accent-input.is-invalid {
+    border-width: 2px;
+}
+
+.invalid-feedback {
+    font-size: 1em;
+}
+
 ::placeholder {
-    margin-left: 5rem;
     color: black!important;
     opacity: 1;
 }
