@@ -31,7 +31,7 @@
             <p class="topic-title"><%= topicDetailResult.getString("TopicTitle") %></p>
         </div>
         <div><p class="topic-content"><%= topicDetailResult.getString("TopicContent") %></p></div>
-        <a class="btn-discussion" href="">
+        <a class="btn-discussion" href="discussion.jsp?topic=<%= request.getParameter("id") %>">
             <p>Discussion</p>
             <img src="./public/assets/Vector.png" alt="">
         </a>
