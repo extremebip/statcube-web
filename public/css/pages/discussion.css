@@ -1,0 +1,33 @@
+.btn-add-discussion {
+    font-size: 1.25rem;
+    font-weight: 500;
+    width: 200px;
+}
+
+.discussion-item {
+    background-image: url('../../assets/Vector.png');
+    background-repeat: no-repeat;
+    background-position: 98% 50%;
+    background-size: 16px;
+    padding: 1rem 1rem;
+    border-bottom: 2px #27647B solid;
+    cursor: pointer;
+    transition: all 0.2s ease-in;
+}
+
+.discussion-item:first-child {
+    border-top: 2px #27647B solid;
+}
+
+.discussion-item:hover {
+    background-color: #AEC0C9;
+}
+
+.discussion-item > p {
+    margin: auto 0;
+}
+
+.discussion-item > .discussion-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+}
