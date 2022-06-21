@@ -1,24 +1,16 @@
 <%@include file="database/connect.jsp" %>
 
 <%
+    String substatus = "";
     boolean isSubscribe = false;
+    
     if (session.getAttribute("Role") != null) {
         String role = session.getAttribute("Role").toString();
-        if (role.equals("Admin")) {
-            isSubscribe = true;
-        } else {
-            int UserID = Integer.parseInt(session.getAttribute("UserID").toString());
-            String checkSubsQuery = String.format(
-                "SELECT * FROM MsUser " + 
-                "WHERE UserID = %d AND DATE(UserSubscriptionEndDate) >= CURDATE()"
-            , UserID);
-            ResultSet checkSubsRs = st.executeQuery(checkSubsQuery);
-            if (checkSubsRs.next()) {
-                isSubscribe = true;
-            }
+        if (role.equals("Admin")) {isSubscribe = true;}
+        else{substatus = session.getAttribute("Status").toString();
+            if(substatus=="true"){isSubscribe = true;}
         }
     }
-
     String selectQuery = "SELECT DISTINCT MsRecommended.CourseID, MsRecommended.CourseTitle, MsAdmin.AdminName, MsTopic.TopicThumbnail FROM MsRecommended JOIN MsAdmin ON MsRecommended.AdminID=MsAdmin.AdminID JOIN MsTopic ON MsTopic.CourseID=MsRecommended.CourseID WHERE TopicID IN (SELECT MIN(TopicID) FROM MsTopic GROUP BY CourseID)";
     ResultSet selectRecommendedRes = st.executeQuery(selectQuery);
 %>

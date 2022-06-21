@@ -20,6 +20,7 @@
         st.executeUpdate(insert);
 
         response.sendRedirect("../profile.jsp");
+        session.setAttribute("Status","true");
 
     }
 
