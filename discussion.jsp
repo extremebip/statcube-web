@@ -25,6 +25,9 @@
         "WHERE td.TopicID = %d", 
     topicId);
     ResultSet rs = st.executeQuery(query);
+
+    String role = ""; 
+    role = (String)session.getAttribute("Role");
     
 %>
 
@@ -69,6 +72,13 @@
                     <p class="discussion-title"><%= rs.getString("DiscussionTitle") %></p>
                     <p class="discussion-author"><%= rs.getString("UserName") %></p>
                     <p class="discussion-date"><%= rs.getString("DiscussionDate") %></p>
+                    <% if(role=="Admin"){%>
+                    <form>
+                        <input type="hidden" name="topicID" value="<%= topicId %>">
+                        <input type="hidden" name="discussionID" value="<%= rs.getInt("DiscussionID") %>">
+                        <button type="submit" class="btn btn-primary btn-action" formaction="./controller/deleteDiscussionController.jsp">Delete</button>
+                    </form>
+                    <%}%>
                 </div>
                 <% } %>
             </div>
