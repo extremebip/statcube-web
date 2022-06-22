@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="./public/css/lib/bootstrap.min.css">
     <link rel="stylesheet" href="./public/css/style.css">
     <link rel="stylesheet" href="./public/css/navbar.css">
-    <link rel="stylesheet" href="./public/css/pages/about_us_style.css">
 
     <!-- Scripts -->
     <script src="./public/js/lib/jquery-3.6.0.min.js"></script>
@@ -34,19 +33,19 @@
             </div>
             <p class="text-center font-weight-bolder" style="color: red;"> <%= session.getAttribute("errorPayment") == null ? "" : session.getAttribute("errorPayment") %></P>
                 <% session.setAttribute("errorPayment",null); %>
+            <center>
             <form action="controller/paymentController.jsp">
-                <div class="col-9" style="margin-left: 160px;">
-                    <center><select id="payment" name="payment" class=" btn btn-pill btn-subscribe" style="background-color: rgb(199, 197, 197);">
+                    <select id="payment" name="payment" class=" btn btn-pill btn-subscribe" style="background-color: rgb(199, 197, 197);">
                         <option value="choose">Choose payment method</option>
                         <option value="BCA">BCA</option>
                         <option value="BNI">BNI</option>
                         <option value="MANDIRI">MANDIRI</option>
                         <option value="CIMB NIAGA">CIMB NIAGA</option>
                         <option value="DBS">DBS</option>
-                    </select></center><br><br><br><br><br>
-                </div>
-                <center><button type="submit" class=" btn btn-danger btn-pill btn-subscribe" style="width: 200px;">Confirm</button></center>
+                    </select><br>
+                <center><button type="submit" class=" btn btn-danger btn-pill btn-subscribe" style="width: 200px;margin-top : 50px">Confirm</button></center>
             </form>
+            </center>
 
         </div>
     </div>

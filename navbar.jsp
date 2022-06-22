@@ -29,7 +29,7 @@
             if(role2=="User" || role2==("Admin"))
             {
         %>
-            <a class="nav-link " href="profile.jsp">Welcome, <%= name %></a>
+            <a class="userbox" href="profile.jsp"><%= name %></a>
         <%         
             } else {
         %>
@@ -63,3 +63,17 @@
         });
     });
 </script>
+
+<style>
+.userbox, .userbox:hover{
+    background-color: #27647B;
+    text-decoration: none;
+    color: white;
+    font-weight :bold;
+    font-size: calc(16px + 0.4vw);
+    max-width: calc(700px + 2vw);
+    text-align: center;
+    padding: 5px 10px;
+    border-radius: 15px;
+}
+</style>
