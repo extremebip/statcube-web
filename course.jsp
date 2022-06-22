@@ -30,7 +30,7 @@
     <section>
         <p class="title">Courses</p>
         <% if(role=="Admin"){%>
-            <a href="addCourse.jsp" class="btn btn-danger btn-pill">Add Course</a>
+            <a href="addCourse.jsp" class="btn btn-danger btn-pill btn-add">Add Course</a>
         <%}%>
         <div class="wrapper">
             <%

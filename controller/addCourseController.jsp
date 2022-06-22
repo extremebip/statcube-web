@@ -26,7 +26,7 @@
     int numberOfWords = description.split("\\s+").length;
     if(numberOfWords < 10){
         if(err != "") err = err + "&";
-        err = err + "errContent2=Description must be at least 10 words";
+        err = err + "errContent2=Description must have at least 10 words";
         validate = false;
     }
 

@@ -26,9 +26,15 @@ section{
 }
 
 .title2{
-    margin: calc(1.5vw + 20px) 0 calc(0.5vw + 10px) 0;
+    margin: calc(1.5vw + 20px) 0 0 0;
     font-weight: bolder;
     font-size: calc(1vw + 20px);
+}
+
+.btn-add {
+    font-size: 1.15rem;
+    font-weight: 500;
+    width: 150px;
 }
 
 .topic-wrapper{

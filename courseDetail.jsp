@@ -1,7 +1,12 @@
 <%@include file="database/connect.jsp" %>
 
 <%
-    String query = String.format("SELECT * FROM MsCourse JOIN MsAdmin ON MsCourse.AdminID=MsAdmin.AdminID WHERE CourseID LIKE %s", request.getParameter("id"));
+    String role = ""; 
+    role = (String)session.getAttribute("Role");
+
+    String courseID = request.getParameter("id");
+
+    String query = String.format("SELECT * FROM MsCourse JOIN MsAdmin ON MsCourse.AdminID=MsAdmin.AdminID WHERE CourseID LIKE %s", courseID);
     ResultSet courseResult = st.executeQuery(query);
     courseResult.next();
 %>
@@ -33,9 +38,21 @@
             <p class="course-description"><%= courseResult.getString("CourseDescription") %></p>
         </div>
         <div class="topic-wrapper">
-            <p class="title2">Topics</p>
+            <% if(role=="Admin") { %>
+                <div class="d-flex align-items-end mb-1">
+                    <div class="mr-auto">
+                        <p class="title2">Topics</p>    
+                    </div>
+                    <div class="ml-auto">
+                        <a href="addTopic.jsp?course=<%= courseID %>" class="btn btn-danger btn-pill btn-add">Add Topic</a>
+                    </div>
+                </div>
+            <% } else { %>
+                <p class="title2 mb-1">Topics</p>
+            <% } %>
+
             <%
-                String selectQuery = String.format("SELECT * FROM MsTopic WHERE CourseID LIKE %s", request.getParameter("id"));
+                String selectQuery = String.format("SELECT * FROM MsTopic WHERE CourseID LIKE %s", courseID);
                 ResultSet topicRes = st.executeQuery(selectQuery);
                 while(topicRes.next()){
             %>

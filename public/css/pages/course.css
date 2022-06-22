@@ -38,6 +38,12 @@ section{
     color: black;
 }
 
+.btn-add {
+    font-size: 1.15rem;
+    font-weight: 500;
+    width: 150px;
+}
+
 .course-title{
     font-size: calc(0.5vw + 16px);
     font-weight: bolder;
