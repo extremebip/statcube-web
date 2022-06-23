@@ -59,11 +59,18 @@
                 <h1>Discussion</h1>
             </div>
         </div>
-        <div class="row mt-2">
-            <div class="col-12">
-                <a href="addDiscussion.jsp?id=<%= request.getParameter("topic") %>" class="btn btn-add-discussion btn-danger btn-pill">Add Discussion</a>
+        <%
+            if(session.getAttribute("Role")=="User"){
+        %>
+            <div class="row mt-2">
+                <div class="col-12">
+                    <a href="addDiscussion.jsp?id=<%= request.getParameter("topic") %>" class="btn btn-add-discussion btn-danger btn-pill">Add Discussion</a>
+                </div>
             </div>
-        </div>
+        <%
+            }
+        %>
+        
         <div class="row mt-3">
             <div class="col-12 discussion-wrapper">
                 <% while(rs.next()) { %>
