@@ -29,7 +29,7 @@
             if(role2=="User" || role2==("Admin"))
             {
         %>
-            <a class="userbox" href="profile.jsp"><%= name %></a>
+            <a class="userbox px-3 rounded-lg" href="profile.jsp"><%= name %></a>
         <%         
             } else {
         %>
