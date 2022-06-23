@@ -76,7 +76,7 @@
                     <form>
                         <input type="hidden" name="topicID" value="<%= topicId %>">
                         <input type="hidden" name="discussionID" value="<%= rs.getInt("DiscussionID") %>">
-                        <button type="submit" class="btn p-1" formaction="./controller/deleteDiscussionController.jsp"><img src="public/assets/btn-delete.png" alt=""></button>
+                        <button type="submit" class="btn p-1 mt-1" formaction="./controller/deleteDiscussionController.jsp"><img src="public/assets/btn-delete.png" alt=""></button>
                     </form>
                     <%}%>
                 </div>
