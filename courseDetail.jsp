@@ -33,8 +33,20 @@
     <%@ include file="navbar.jsp" %>
     <section>
         <div class="box">
-            <p class="course-title"><%= courseResult.getString("CourseTitle") %></p>
-            <p class="course-author">by <%= courseResult.getString("AdminName") %></p>
+            <div class="inline">
+                <div>
+                    <p class="course-title"><%= courseResult.getString("CourseTitle") %></p>
+                    <p class="course-author">by <%= courseResult.getString("AdminName") %></p>
+                </div>
+                <%
+                    if(session.getAttribute("Role") == "Admin"){
+                %>
+                        <a href="./controller/deleteCourseController.jsp?id=<%= courseID %>"><img class="btn-delete" src="./public/assets/btn-delete.png" alt=""></a>
+                <%
+                    }
+                %>
+                
+            </div>
             <p class="course-description"><%= courseResult.getString("CourseDescription") %></p>
         </div>
         <div class="topic-wrapper">
