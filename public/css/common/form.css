@@ -5,6 +5,7 @@
     border-radius: 9999px;
     background-color: #849FAD;
     border-color: transparent;
+    padding: 1.5rem;
 }
 
 .accent-input.is-invalid {

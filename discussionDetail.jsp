@@ -72,7 +72,19 @@
                             <p class="post-name"><%= postResult.getString("UserName") %></p>
                             <p class="post-date"><%= formatter.format(postResult.getDate("PostDate")) %></p>
                             <p class="post-content"><%= postResult.getString("PostContent") %></p>
-                        </div>
+                                      <%
+                    if(session.getAttribute("Role") == "Admin"){
+                %>  
+                        <form>
+                        <input type="hidden" name="PostID" value="<%= postResult.getInt("PostID") %>">
+                        <input type="hidden" name="id" value="<%= request.getParameter("id") %>">
+                        <button type="submit" class="btn p-1 mt-1" formaction="./controller/deletePostController.jsp">
+                        <img src="public/assets/btn-delete.png" alt=""></button>
+                        </form>
+                <%
+                    }
+                %></div>
+
                 <%
                     }
                 %>

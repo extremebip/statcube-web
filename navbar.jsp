@@ -4,7 +4,6 @@
     String name = "" ;
     name = (String)session.getAttribute("Name");
 %>
-
 <nav class="navbar navbar-expand-lg navbar-light">
     <a href="home.jsp" class="navbar-brand">
         <img src="./public/assets/logo small.png" alt="" height="55">
@@ -29,7 +28,7 @@
             if(role2=="User" || role2==("Admin"))
             {
         %>
-            <a class="userbox" href="profile.jsp"><%= name %></a>
+            <a class="userbox px-3 rounded-lg" href="profile.jsp"><%= name %></a>
         <%         
             } else {
         %>
@@ -76,4 +75,5 @@
     padding: 5px 10px;
     border-radius: 15px;
 }
+
 </style>
