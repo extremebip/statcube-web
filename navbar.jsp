@@ -4,7 +4,6 @@
     String name = "" ;
     name = (String)session.getAttribute("Name");
 %>
-
 <nav class="navbar navbar-expand-lg navbar-light">
     <a href="home.jsp" class="navbar-brand">
         <img src="./public/assets/logo small.png" alt="" height="55">
@@ -76,4 +75,5 @@
     padding: 5px 10px;
     border-radius: 15px;
 }
+
 </style>
