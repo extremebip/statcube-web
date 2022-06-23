@@ -17,6 +17,9 @@
     String query = String.format("SELECT * FROM MsTopic WHERE TopicID LIKE %s", request.getParameter("id"));
     ResultSet topicDetailResult = st.executeQuery(query);
     topicDetailResult.next();
+
+    String role = ""; 
+    role = (String)session.getAttribute("Role");
 %>
 
 <!DOCTYPE html>
@@ -41,8 +44,22 @@
     <%@ include file="navbar.jsp" %>
     <section>
         <div class="top-section">
-            <img class="topic-thumbnail" src="<%= topicDetailResult.getString("TopicThumbnail") %>" alt="">
-            <p class="topic-title"><%= topicDetailResult.getString("TopicTitle") %></p>
+            <div class="d-flex flex-direction-row">
+                <img class="topic-thumbnail" src="<%= topicDetailResult.getString("TopicThumbnail") %>" alt="">
+                <p class="topic-title"><%= topicDetailResult.getString("TopicTitle") %></p>
+            </div>
+            
+            <div class="delete-btn">
+            <% if(role=="Admin"){
+            %>
+                <form>
+                    <input type="hidden" name="topicId" value="<%= request.getParameter("id") %>">
+                    <input type="hidden" name="courseId" value="<%= topicDetailResult.getInt("CourseID") %>">
+                    <button type="submit" class="btn p-1" formaction="./controller/deleteTopicController.jsp"><img src="public/assets/btn-delete.png" alt=""></button> 
+                </form>
+            <% }
+            %>
+            </div>
         </div>
         <div><p class="topic-content"><%= topicDetailResult.getString("TopicContent") %></p></div>
         <a class="btn-discussion" href="discussion.jsp?topic=<%= request.getParameter("id") %>">
