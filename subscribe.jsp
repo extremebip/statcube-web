@@ -20,26 +20,63 @@
 </head>
 <body>
     <%@ include file="navbar.jsp" %>
-    <!-- <div class="content container-md">
 
-    </div> -->
-    <div class="row">
-        <div class="col-12 p-5">
-            <h1 class="font-weight-bolder text-center">Subscribe</h1><br>
-            <div style="margin-left: 200px;">
-                <h4 class="font-weight-bolder m-2 px-5">Benefits</h4>
-                <img src="./public/images/bl.png" alt="" height="20"><h5 class="m-2 px-5">Free access to all courses</h5>
-                <img src="./public/images/bl.png" alt="" height="20"><h5 class="m-2 px-5">Connect with other users via forum discussion</h5>
-                <br>
-                <h4 class="font-weight-bolder m-2 px-5">IDR 500.000</h4>
-                <h5 class="m-2 px-5">1 month</h5><br><br>
-            </div>
-            
-            <center><a href="payment.jsp"><button class=" btn btn-danger btn-pill btn-subscribe">Continue to Payment</button></a></center>
+    <section>
+        <h1 class="font-weight-bolder center">Subscribe</h1>
+        <div class="box">
+            <h3 class="font-weight-bolder">Benefits</h3>
+            <table>
+                <tr>
+                    <td><img src="./public/assets/benefits.png"></td>
+                    <td><p>Connect with other users via forum discussion</p></td>
+                </tr>
+                <tr>
+                    <td><img src="./public/assets/benefits.png"></td>
+                    <td><p>Free access to all courses</p></td>
+                </tr>
+            </table>
+            <h4 class="font-weight-bolder">IDR 500.000</h4>
+            <h5>1 month</h5>
         </div>
-    </div>
-
-
+        <center><a class="button" href="payment.jsp">Continue to Payment</a>  </center>
+    </section>
+    
     <%@ include file="footer.jsp" %>
+    <style>
+        section{
+            margin: calc(4vw + 20px) calc(2vw + 24px);
+        }
+        .box{
+            width: calc(225px + 32vw);
+            margin: calc(2vw + 20px) auto;
+        }
+        .center{
+            text-align: center;
+        }
+        table{
+            margin: calc(1.5vw + 6px) 0 calc(0.6vw + 4px) 0;
+        }
+        td{
+            padding-top: 4px;
+            vertical-align: top;
+        }
+        table img{
+            width: calc(1vw + 16px);
+            margin-right: 16px;
+        }
+        table p{
+            min-height: calc(1vw + 26px);
+            margin: 0;
+            font-size: calc(0.4vw + 15px);
+        }
+        .button, .button:hover{
+            text-decoration: none;
+            color: white;
+            background-color: #CA3542;
+            padding: 8px 36px;
+            border-radius: 20px;
+            font-size: calc(0.3vw + 14px);
+        }
+    </style>
 </body>
 </html>
